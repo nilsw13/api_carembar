@@ -8,7 +8,7 @@ router.get('/jokes', jokeController.getAllJokes);
 
 // get /api/jokes/random fetch random joke
 
-router.get('/jokes/random', jokeController.getRandomJoke);
+router.get('/jokes/random', jokeController.getRandomJoke); // error on random fetch lets see later 
 
 // get /api/jokes/:id fetch joke by id
 

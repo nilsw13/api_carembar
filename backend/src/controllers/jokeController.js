@@ -28,12 +28,12 @@ class jokeController {
 
    async getJokeById(req, res) {
 
+    const jokeId = req.params.id;
+    console.log("joke id recu : ",jokeId);
+    
+
     try {
-        const joke = await Joke.findOne({
-            where: {
-                id: req.params.id,
-            }
-        });
+        const joke = await Joke.findByPk(jokeId);
 
         if (!joke) {
             res.status(404).json({
@@ -42,6 +42,11 @@ class jokeController {
             });
             return;
         }
+
+        res.json({
+            status: 'success',
+            data: joke,
+        });
 
 
         
