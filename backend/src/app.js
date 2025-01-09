@@ -1,6 +1,6 @@
 const express = require('express');
 const sequelize = require('./config/database');
-
+const jokesRoutes = require('./routes/jokeRoutes');
 
 
 // create express app ( similar to @springbootapplication)
@@ -9,9 +9,24 @@ const app = express();
 
 app.use(express.json());
 
+// add global prefix to all routes
+app.use("/api", jokesRoutes)
 
 // test routes to see if the server is running at / 
-
+    app.get('/', (req, res) => {
+        res.json({
+            message : "Bienvenu sur l'api Carambar Jokes !",
+            version : "1.0.0", 
+            author : "Nils Wenting",
+            endpoints: {
+                getJokes: "/api/jokes",
+                getJokeByID: "/api/jokes/:id",
+                addJoke: "/api/jokes/create",
+                updateJokeByID: "/api/jokes/:id",
+                deleteJokeByID: "/api/jokes/:id",
+            }
+        })
+    })
 
 // startting the server  similar to @springbapplication.run()
 const startServer = async () => {
