@@ -1,13 +1,22 @@
 const express = require('express');
 const sequelize = require('./config/database');
 const jokesRoutes = require('./routes/jokeRoutes');
+const clientSourceCheck = require('./middleware/clientSourceCheck');
+const cors = require('cors');
 
 
 // create express app ( similar to @springbootapplication)
 
 const app = express();
 
+// add cors middleware to allow cross origin requests
+app.use(cors());
+
+// add json middleware to parse json body
 app.use(express.json());
+
+// use middleware to check the client source
+app.use('/api', clientSourceCheck);
 
 // add global prefix to all routes
 app.use("/api", jokesRoutes)
@@ -22,8 +31,6 @@ app.use("/api", jokesRoutes)
                 getJokes: "/api/jokes",
                 getJokeByID: "/api/jokes/:id",
                 addJoke: "/api/jokes/create",
-                updateJokeByID: "/api/jokes/:id",
-                deleteJokeByID: "/api/jokes/:id",
             }
         })
     })
