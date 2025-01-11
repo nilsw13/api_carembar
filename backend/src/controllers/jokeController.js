@@ -1,3 +1,4 @@
+const Sequelize = require('sequelize');
 const Joke = require('../models/Joke');
 
 // this class will act as a @RestController in spring boot
@@ -67,7 +68,7 @@ class jokeController {
         try {
             const joke = await Joke.findOne({
                 order: [
-                    [Sequelize.fn('RANDOM')],
+                    [Sequelize.literal('RANDOM()')],
                 ],
             });
 
@@ -93,6 +94,7 @@ class jokeController {
             const joke = await Joke.create({
                 question: req.body.question,
                 answer: req.body.answer,
+                isUserCreated: true,
             });
     
             res.status(201).json({

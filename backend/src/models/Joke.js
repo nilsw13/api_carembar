@@ -27,6 +27,11 @@ Joke.init({
         }
     } ,
 
+    isUserCreated: {
+        type : DataTypes.BOOLEAN,
+        allowNull: true,
+    },
+
 }, {
     sequelize,
     modelName: 'Joke',

@@ -2,22 +2,21 @@
 
 // this is the middleware thhat will check the client source
 
-const clientSourceCheck = (req, res, next) => {
+const sourceCheckMiddleware = (req, res, next) => {
+    const clientSource = req.headers['x-client-source'];
 
-    const clientSource = req.headers['X-client-source'];
+    // Log pour le débogage
+    console.log('Source de la requête:', clientSource);
 
-    console.log(clientSource);
-
-    if (!clientSource || clientSource != "carambar-frontend") {
+    if (clientSource === 'carambar-frontend') {
+        next();
+    } else {
+        // Si le header n'est pas correct, on renvoie une erreur 403
         res.status(403).json({
             status: 'error',
-            message: 'Forbidden',
+            message: 'Source non autorisée'
         });
-        return;
     }
+};
 
-    next();
-
-}
-
-module.exports = clientSourceCheck;
+module.exports = sourceCheckMiddleware;

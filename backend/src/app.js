@@ -1,7 +1,7 @@
 const express = require('express');
 const sequelize = require('./config/database');
 const jokesRoutes = require('./routes/jokeRoutes');
-const clientSourceCheck = require('./middleware/clientSourceCheck');
+const sourceCheckMiddleware = require('./middleware/clientSourceCheck');
 const cors = require('cors');
 
 
@@ -10,13 +10,19 @@ const cors = require('cors');
 const app = express();
 
 // add cors middleware to allow cross origin requests
-app.use(cors());
+app.use(cors(
+    {
+        origin: 'http://localhost:5173',
+        allowedHeaders: ['Content-Type', 'X-client-source'],
+        methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    }
+));
 
 // add json middleware to parse json body
 app.use(express.json());
 
 // use middleware to check the client source
-app.use('/api', clientSourceCheck);
+app.use('/api', sourceCheckMiddleware);
 
 // add global prefix to all routes
 app.use("/api", jokesRoutes)
