@@ -144,6 +144,15 @@ async deleteJokeById(req, res) {
                 id: jokeId,
             },
         });
+
+        // refresh the jokes list
+        const jokes = await Joke.findAll();
+        res.json({
+            status: 'success',
+            data: jokes,
+        });
+
+        
     } catch (error) {
         res.status(500).json({
             status: 'error',
