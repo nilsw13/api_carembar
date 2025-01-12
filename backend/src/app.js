@@ -47,7 +47,7 @@ const startServer = async () => {
     try {
 
     // we first sync the database
-    await sequelize.sync({force: false});
+    await sequelize.sync({force: false, alter: true});
     console.log('Database synchronized');
 
     // then we start the server

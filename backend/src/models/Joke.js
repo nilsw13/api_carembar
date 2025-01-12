@@ -32,6 +32,15 @@ Joke.init({
         allowNull: true,
     },
 
+    countOfLikes: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+    },
+
+    
+
+
+
 }, {
     sequelize,
     modelName: 'Joke',

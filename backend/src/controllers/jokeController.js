@@ -95,6 +95,8 @@ class jokeController {
                 question: req.body.question,
                 answer: req.body.answer,
                 isUserCreated: true,
+                countOfLikes: 0,
+
             });
     
             res.status(201).json({
@@ -108,6 +110,97 @@ class jokeController {
                 message: error.message,
             });
         }
+
+}
+
+
+// delete joke by id
+
+
+async deleteJokeById(req, res) {
+    const jokeId = req.params.id;
+
+    const jokeToDelete = await Joke.findByPk(jokeId);
+
+    if (!jokeToDelete) {
+        return res.status(404).json({
+            status: 'error',
+            message: 'Blague non trouvée',
+        });
+    }
+    
+    // check if joke have more than 10 likes    
+    if (jokeToDelete.countOfLikes >= 10) {
+        res.status(403).json({
+            status: 'error',
+            message: 'You cannot delete a joke with more than 10 likes',
+        });
+        return;
+    }
+
+    try{
+        await Joke.destroy({
+            where: {
+                id: jokeId,
+            },
+        });
+    } catch (error) {
+        res.status(500).json({
+            status: 'error',
+            message: error.message,
+        });
+    }
+
+
+
+}
+
+// like a joke
+
+async likeJoke(req, res) {
+    const jokeId = req.params.id;
+
+    try {
+        const joke = await Joke.findByPk(jokeId);
+
+        if (!joke) {
+            return res.status(404).json({
+                status: 'error',
+                message: 'Joke not found',
+            });
+        }
+
+        // increment likes
+
+        await joke.increment('countOfLikes');
+        console.log("Incrémentation réussie pour la blague ID:", jokeId);
+
+        
+
+
+        // then reload the joke
+
+        const updatedJoke = await joke.reload();
+        console.log("Blague mise à jour :", updatedJoke.toJSON());
+
+        // return updated joke 
+         res.status(200).json({
+             status: 'success',
+             data: updatedJoke,
+         });
+    } catch (error) {
+        res.status(500).json({
+            status: 'error',
+            message: error.message,
+        });
+
+
+}
+
+
+
+
+
 
 }
 

@@ -24,43 +24,53 @@ const cleanData = async () => {
             const initialJokes = [
                 {
                     question: "Quelle est la femelle du hamster ?",
-                    answer: "L'Amsterdam"
+                    answer: "L'Amsterdam",
+                    countOfLikes: 10
                 },
                 {
                     question: "Que dit un oignon quand il se cogne ?",
-                    answer: "Aïe"
+                    answer: "Aïe",
+                    countOfLikes: 18
                 },
                 {
                     question: "Quel est l'animal le plus heureux ?",
-                    answer: "Le hibou, parce que sa femme est chouette"
+                    answer: "Le hibou, parce que sa femme est chouette",
+                    countOfLikes: 11
                 },
                 {
                     question: " Pourquoi le football c'est rigolo ?",
-                    answer: "Parce que Thierry en rit"
+                    answer: "Parce que Thierry en rit",
+                    countOfLikes: 15
                 },
                 {
                     question: " Quel est le sport le plus fruité ?",
-                    answer: "La boxe, parce que tu te prends des pêches dans la poire et tu tombes dans les pommes"
+                    answer: "La boxe, parce que tu te prends des pêches dans la poire et tu tombes dans les pommes",
+                    countOfLikes: 13
                 },
                 {
                     question: "Que se fait un Schtroumpf quand il tombe ?",
-                    answer: "Un Bleu"
+                    answer: "Un Bleu",
+                    countOfLikes: 12
                 },
                 {
                     question: " Quel est le comble pour un marin ?",
-                    answer: "Avoir le nez qui coule"
+                    answer: "Avoir le nez qui coule",
+                    countOfLikes: 14
                 },
                 {
                     question: " Qu'est ce que les enfants usent le plus à l'école ?",
-                    answer: "Le professeur"
+                    answer: "Le professeur",
+                    countOfLikes: 16
                 },
                 {
                     question: "Quel est le sport le plus silencieux ?",
-                    answer: "Le para-chuuuut"
+                    answer: "Le para-chuuuut",
+                    countOfLikes: 17
                 },
                 {
                     question: "Quel est le comble pour un joueur de bowling ?",
-                    answer: "C’est de perdre la boule"
+                    answer: "C’est de perdre la boule",
+                    countOfLikes: 19
                 },
             ];
             

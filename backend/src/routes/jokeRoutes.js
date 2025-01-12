@@ -14,6 +14,14 @@ router.get('/jokes/random', jokeController.getRandomJoke); // error on random fe
 
 router.get('/jokes/:id', jokeController.getJokeById);
 
+// delete /api/jokes/delete/:id delete joke by id
+
+router.delete('/jokes/delete/:id', jokeController.deleteJokeById);
+
+// post /api/jokes/like/:id like a joke
+
+router.post('/jokes/:id/like', jokeController.likeJoke);
+
 
 
 
