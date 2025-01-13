@@ -1,8 +1,8 @@
-const express = require('express');
-const sequelize = require('./config/database');
-const jokesRoutes = require('./routes/jokeRoutes');
-const sourceCheckMiddleware = require('./middleware/clientSourceCheck');
-const cors = require('cors');
+import express, { json } from 'express';
+import { authenticate, sync } from './config/database';
+import jokesRoutes from './routes/jokeRoutes';
+import sourceCheckMiddleware from './middleware/clientSourceCheck';
+import cors from 'cors';
 
 // Configuration des variables d'environnement
 const PORT = process.env.PORT || 3000;
@@ -23,7 +23,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 // Middleware pour parser le JSON
-app.use(express.json());
+app.use(json());
 
 // Middleware de sécurité pour la source client
 app.use('/api', sourceCheckMiddleware);
@@ -55,11 +55,11 @@ app.get('/', (req, res) => {
 const startServer = async () => {
     try {
         // Vérification de la connexion à la base de données
-        await sequelize.authenticate();
+        await authenticate();
         console.log('✅ Connexion à la base de données établie');
 
         // Synchronisation de la base de données (désactivée en production)
-        await sequelize.sync({
+        await sync({
             force: false,
             alter: !isProduction // Désactive alter en production
         });
@@ -86,4 +86,4 @@ process.on('unhandledRejection', (error) => {
 // Démarrage du serveur
 startServer();
 
-module.exports = app;
+export default app;
