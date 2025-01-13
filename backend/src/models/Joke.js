@@ -1,5 +1,5 @@
-import { Model, DataTypes } from 'sequelize';
-import { sequelize } from '../config/database';
+const { Model, DataTypes } = require('sequelize');
+const { sequelize } = require('../config/database');
 
 
 class Joke extends Model {}
