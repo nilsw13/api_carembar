@@ -1,8 +1,11 @@
 import express, { json } from 'express';
 import { initializeDatabase } from './config/database.js';
+import {swaggerSpec} from './config/swagger.js';
+import swaggerUi from 'swagger-ui-express';
 import jokesRoutes from './routes/jokeRoutes.js';
 import sourceCheckMiddleware from './middleware/clientSourceCheck.js';
 import cors from 'cors';
+import swaggerSpec from './config/swagger.js';
 
 
 
@@ -29,6 +32,7 @@ app.use(json());
 // Middleware de sécurité pour la source client
 app.use('/api', sourceCheckMiddleware);
 
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 
 
