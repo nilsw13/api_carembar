@@ -51,7 +51,7 @@ const router = express.Router();
  *                         type: integer
  *                         example: 5
  */
-router.get('/jokes', getAllJokes);
+router.get('/v1/jokes', getAllJokes);
 
 
 
@@ -92,7 +92,7 @@ router.get('/jokes', getAllJokes);
  *                       type: integer
  *                       example: 5
  */
-router.get('/jokes/random', getRandomJoke);
+router.get('/v1/jokes/random', getRandomJoke);
 
 /**
  * @swagger
@@ -150,7 +150,7 @@ router.get('/jokes/random', getRandomJoke);
  *                   type: string
  *                   example: "Joke not found"
  */
-router.get('/jokes/:id', getJokeById);
+router.get('/v1/jokes/:id', getJokeById);
 
 /**
  * @swagger
@@ -204,7 +204,7 @@ router.get('/jokes/:id', getJokeById);
  *                   type: string
  *                   example: "You cannot delete a joke with more than 10 likes"
  */
-router.delete('/jokes/delete/:id', deleteJokeById);
+router.delete('/v1/jokes/delete/:id', deleteJokeById);
 
 
 
@@ -254,7 +254,7 @@ router.delete('/jokes/delete/:id', deleteJokeById);
  *                       example: 6
  */
 
-router.post('/jokes/:id/like', likeJoke);
+router.post('/v1/jokes/:id/like', likeJoke);
 
 /**
  * @swagger
@@ -305,7 +305,7 @@ router.post('/jokes/:id/like', likeJoke);
  *                       type: integer
  *                       example: 0
  */
-router.post('/jokes/create', createJoke);
+router.post('/v1/jokes/create', createJoke);
 
 
 export default router;
