@@ -13,7 +13,6 @@ const dbPath = isProduction
   ? path.join('/tmp', 'carambar.sqlite')  // Utilisation du dossier /tmp
   : path.join(__dirname, '..', 'carambar.sqlite');
 
-// Assurons-nous que le dossier parent existe
 const dbDir = path.dirname(dbPath);
 if (!fs.existsSync(dbDir)) {
     fs.mkdirSync(dbDir, { recursive: true });
@@ -25,17 +24,14 @@ export const sequelize = new Sequelize({
     logging: isProduction ? false : console.log
 });
 
-// Fonction d'initialisation améliorée
 export const initializeDatabase = async () => {
     try {
         await sequelize.authenticate();
-        console.log('✅ Connexion établie');
+        console.log(' Connexion établie');
         
-        // Synchronisation de la base de données
-        await sequelize.sync({ force: isProduction }); // force: true en production car la DB est éphémère
-        console.log('✅ Base de données synchronisée');
+        await sequelize.sync({ force: isProduction }); 
+        console.log(' Base de données synchronisée');
 
-        // Ajout des données initiales si la base est vide
         const Joke = sequelize.models.Joke;
         const count = await Joke.count();
         if (count === 0) {
@@ -104,10 +100,10 @@ export const initializeDatabase = async () => {
 
               
             ]);
-            console.log('✅ Données initiales créées');
+            console.log(' Données initiales créées');
         }
     } catch (error) {
-        console.error('❌ Erreur d\'initialisation :', error);
+        console.error(' Erreur d\'initialisation :', error);
         throw error;
     }
 };

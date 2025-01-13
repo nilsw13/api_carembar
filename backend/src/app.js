@@ -12,10 +12,10 @@ const isProduction = process.env.NODE_ENV === 'production';
 // Création de l'application Express
 const app = express();
 
-// Configuration CORS adaptative selon l'environnement
+
 const corsOptions = {
     origin: isProduction 
-        ? ['https://nilsw13.github.io'] // Remplacez nilsw13 par votre nom d'utilisateur GitHub
+        ? ['https://nilsw13.github.io'] 
         : 'http://localhost:5173',
     allowedHeaders: ['Content-Type', 'X-client-source'],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -71,10 +71,10 @@ const startServer = async () => {
         
         // Démarrage du serveur
         app.listen(PORT, () => {
-            console.log(`✅ Serveur démarré sur le port ${PORT}`);
+            console.log(` Serveur démarré sur le port ${PORT}`);
         });
     } catch (error) {
-        console.error('❌ Erreur au démarrage:', error);
+        console.error('Erreur au démarrage:', error);
         process.exit(1);
     }
 };

@@ -68,6 +68,8 @@ export const getJokeById = async (req, res) => {
     }
 };
 
+// Création d'une blague
+
 export const createJoke = async (req, res) => {
     try {
         const joke = await Joke.create({
@@ -128,6 +130,8 @@ export const deleteJokeById = async (req, res) => {
     }
 };
 
+
+// Incrémentation du nombre de likes d'une blague
 export const likeJoke = async (req, res) => {
     const jokeId = req.params.id;
 
