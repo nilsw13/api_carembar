@@ -4,72 +4,86 @@ const jokesRoutes = require('./routes/jokeRoutes');
 const sourceCheckMiddleware = require('./middleware/clientSourceCheck');
 const cors = require('cors');
 
+// Configuration des variables d'environnement
+const PORT = process.env.PORT || 3000;
+const isProduction = process.env.NODE_ENV === 'production';
 
-// create express app ( similar to @springbootapplication)
-
+// Création de l'application Express
 const app = express();
 
-// add cors middleware to allow cross origin requests
-app.use(cors(
-    {
-        origin: 'http://localhost:5173',
-        allowedHeaders: ['Content-Type', 'X-client-source'],
-        methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    }
-));
+// Configuration CORS adaptative selon l'environnement
+const corsOptions = {
+    origin: isProduction 
+        ? ['https://nilsw13.github.io/frontend_carambar'] // Remplacez nilsw13 par votre nom d'utilisateur GitHub
+        : 'http://localhost:5173',
+    allowedHeaders: ['Content-Type', 'X-client-source'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
+};
+app.use(cors(corsOptions));
 
-// add json middleware to parse json body
+// Middleware pour parser le JSON
 app.use(express.json());
 
-// use middleware to check the client source
+// Middleware de sécurité pour la source client
 app.use('/api', sourceCheckMiddleware);
 
-// add global prefix to all routes
-app.use("/api", jokesRoutes)
+// Route de santé pour Render
+app.get('/healthz', (req, res) => {
+    res.status(200).json({ status: 'healthy' });
+});
 
-// test routes to see if the server is running at / 
-    app.get('/', (req, res) => {
-        res.json({
-            message : "Bienvenu sur l'api Carambar Jokes !",
-            version : "1.0.0", 
-            author : "Nils Wenting",
-            endpoints: {
-                getJokes: "/api/jokes",
-                getJokeByID: "/api/jokes/:id",
-                addJoke: "/api/jokes/create",
-            }
-        })
-    })
+// Routes de l'API
+app.use("/api", jokesRoutes);
 
-// startting the server  similar to @springbapplication.run()
+// Route d'accueil avec documentation de l'API
+app.get('/', (req, res) => {
+    res.json({
+        message: "Bienvenue sur l'api Carambar Jokes !",
+        version: "1.0.0",
+        author: "Nils Wenting",
+        environment: process.env.NODE_ENV || 'development',
+        endpoints: {
+            getJokes: "/api/jokes",
+            getJokeByID: "/api/jokes/:id",
+            addJoke: "/api/jokes/create",
+        }
+    });
+});
+
+// Fonction de démarrage du serveur améliorée
 const startServer = async () => {
-
     try {
+        // Vérification de la connexion à la base de données
+        await sequelize.authenticate();
+        console.log('✅ Connexion à la base de données établie');
 
-    // we first sync the database
-    await sequelize.sync({force: false, alter: true});
-    console.log('Database synchronized');
+        // Synchronisation de la base de données (désactivée en production)
+        await sequelize.sync({
+            force: false,
+            alter: !isProduction // Désactive alter en production
+        });
+        console.log('✅ Base de données synchronisée');
 
-    // then we start the server
-    app.listen(3000, () => {
-        console.log('Server started on http://localhost:3000');
-    }
-    );
-
+        // Démarrage du serveur
+        app.listen(PORT, () => {
+            console.log(`✅ Serveur démarré sur le port ${PORT}`);
+            console.log(`📝 Environnement: ${process.env.NODE_ENV || 'development'}`);
+            console.log(`🔒 Mode production: ${isProduction}`);
+        });
     } catch (error) {
-        console.error('An error occurred: ', error);
+        console.error('❌ Erreur au démarrage:', error);
         process.exit(1);
     }
+};
 
-}
+// Gestion des erreurs non attrapées
+process.on('unhandledRejection', (error) => {
+    console.error('❌ Erreur non gérée:', error);
+    process.exit(1);
+});
 
+// Démarrage du serveur
 startServer();
-
-
-
-
-
-
-
 
 module.exports = app;
