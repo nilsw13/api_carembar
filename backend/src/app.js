@@ -1,8 +1,10 @@
 import express, { json } from 'express';
-import { authenticate, sync } from './config/database';
-import jokesRoutes from './routes/jokeRoutes';
-import sourceCheckMiddleware from './middleware/clientSourceCheck';
+import { sequelize, testDatabaseConnection, sync } from './config/database.js';
+import jokesRoutes from './routes/jokeRoutes.js';
+import sourceCheckMiddleware from './middleware/clientSourceCheck.js';
 import cors from 'cors';
+
+// Le reste du code reste identique
 
 // Configuration des variables d'environnement
 const PORT = process.env.PORT || 3000;
@@ -54,34 +56,25 @@ app.get('/', (req, res) => {
 // Fonction de démarrage du serveur améliorée
 const startServer = async () => {
     try {
-        // Vérification de la connexion à la base de données
-        await authenticate();
-        console.log('✅ Connexion à la base de données établie');
-
-        // Synchronisation de la base de données (désactivée en production)
-        await sync({
-            force: false,
-            alter: !isProduction // Désactive alter en production
-        });
-        console.log('✅ Base de données synchronisée');
-
-        // Démarrage du serveur
-        app.listen(PORT, () => {
-            console.log(`✅ Serveur démarré sur le port ${PORT}`);
-            console.log(`📝 Environnement: ${process.env.NODE_ENV || 'development'}`);
-            console.log(`🔒 Mode production: ${isProduction}`);
-        });
+      // Test d'accès à la base de données
+      await testDatabaseConnection();
+      
+      // Synchronisation des modèles
+      await sync({
+        force: false,
+        alter: !isProduction
+      });
+      
+      // Démarrage du serveur
+      app.listen(PORT, () => {
+        console.log(`✅ Serveur démarré sur le port ${PORT}`);
+      });
+      
     } catch (error) {
-        console.error('❌ Erreur au démarrage:', error);
-        process.exit(1);
+      console.error('❌ Erreur au démarrage:', error);
+      process.exit(1);
     }
-};
-
-// Gestion des erreurs non attrapées
-process.on('unhandledRejection', (error) => {
-    console.error('❌ Erreur non gérée:', error);
-    process.exit(1);
-});
+  };
 
 // Démarrage du serveur
 startServer();

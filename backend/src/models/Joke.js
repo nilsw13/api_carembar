@@ -1,5 +1,6 @@
-const { Model, DataTypes } = require('sequelize');
-const { sequelize } = require('../config/database');
+// models/Joke.js
+import { Model, DataTypes } from 'sequelize';
+import { sequelize } from '../config/database.js';
 
 
 class Joke extends Model {}
