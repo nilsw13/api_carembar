@@ -5,7 +5,7 @@ import swaggerUi from 'swagger-ui-express';
 import jokesRoutes from './routes/jokeRoutes.js';
 import sourceCheckMiddleware from './middleware/clientSourceCheck.js';
 import cors from 'cors';
-import swaggerSpec from './config/swagger.js';
+
 
 
 

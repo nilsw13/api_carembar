@@ -22,5 +22,5 @@ const options = {
   apis: ["./routes/*.js"], // Indique où Swagger doit chercher les commentaires
 };
 
-const swaggerSpec = swaggerJsdoc(options);
+export const swaggerSpec = swaggerJsdoc(options);
 export default swaggerSpec;
