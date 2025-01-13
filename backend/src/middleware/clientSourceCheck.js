@@ -19,4 +19,4 @@ const sourceCheckMiddleware = (req, res, next) => {
     }
 };
 
-module.exports = sourceCheckMiddleware;
+export default sourceCheckMiddleware;

@@ -1,5 +1,5 @@
-const Sequelize = require('sequelize');
-const Joke = require('../models/Joke').default;
+import { literal } from 'sequelize';
+import Joke from '../models/Joke';
 
 // this class will act as a @RestController in spring boot
 
@@ -68,7 +68,7 @@ class jokeController {
         try {
             const joke = await Joke.findOne({
                 order: [
-                    [Sequelize.literal('RANDOM()')],
+                    [literal('RANDOM()')],
                 ],
             });
 
@@ -215,4 +215,4 @@ async likeJoke(req, res) {
 
 }
 
-module.exports = new jokeController();
+export default new jokeController();
