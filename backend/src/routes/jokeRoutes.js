@@ -33,4 +33,4 @@ router.post('/jokes/create', jokeController.createJoke);
 
 
 
-module.exports = router;
+export default router; 
