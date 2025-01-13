@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const Joke = require('../models/Joke');
+const Joke = require('../models/Joke').default;
 
 // this class will act as a @RestController in spring boot
 
