@@ -9,7 +9,7 @@ Bienvenue dans le backend de Carambar & co, une API dédiée à la gestion et à
 
  
 ```bash
-    curl -X GET https://api-carembar.onrender.com/jokes/random \
+    curl -X GET https://api-carembar.onrender.com/api/jokes/random \
 -H "x-client-source: carambar-frontend"
 ```
 
@@ -21,16 +21,11 @@ Bienvenue dans le backend de Carambar & co, une API dédiée à la gestion et à
 
     Pour tester cette API avec des outils comme Postman, cURL, ou autres, assurez-vous d'ajouter ce header custom à toutes vos requêtes.
 
-    Voici un exemple avec Postman :
-
-        Allez dans l'onglet Headers.
-        Ajoutez une clé : carambar_frontend.
-        Ajoutez une valeur : true.
-
+    
     Exemple avec cURL :
 
 ```bash
-        curl -X GET https://api-carembar.onrender.com/jokes \
+    curl -X GET https://api-carembar.onrender.com/api/jokes \
 -H "x-client-source: carambar-frontend"
 ```
 
@@ -102,8 +97,9 @@ Par défaut, le serveur est accessible sur :
 
 🛠️ Déploiement
 
-Le backend est déployé sur Render et accessible publiquement.
-👉 Lien vers l'API en production
+Le backend est déployé sur Render.
+### 👉 Lien vers l'API en production
+[Carambar API Documentation](https://api-carembar.onrender.com/)
 
 
 🌟 Auteur
