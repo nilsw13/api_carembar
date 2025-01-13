@@ -1,12 +1,11 @@
 import express, { json } from 'express';
-import { sequelize, testDatabaseConnection, sync } from './config/database.js';
+import { initializeDatabase } from './config/database.js';
 import jokesRoutes from './routes/jokeRoutes.js';
 import sourceCheckMiddleware from './middleware/clientSourceCheck.js';
 import cors from 'cors';
 
-// Le reste du code reste identique
 
-// Configuration des variables d'environnement
+
 const PORT = process.env.PORT || 3000;
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -29,6 +28,11 @@ app.use(json());
 
 // Middleware de sécurité pour la source client
 app.use('/api', sourceCheckMiddleware);
+
+
+
+
+
 
 // Route de santé pour Render
 app.get('/healthz', (req, res) => {
@@ -53,30 +57,28 @@ app.get('/', (req, res) => {
     });
 });
 
-// Fonction de démarrage du serveur améliorée
+
+
+
+
+
+
+
 const startServer = async () => {
     try {
-      // Test d'accès à la base de données
-      await testDatabaseConnection();
-      
-      // Synchronisation des modèles
-      await sync({
-        force: false,
-        alter: !isProduction
-      });
-      
-      // Démarrage du serveur
-      app.listen(PORT, () => {
-        console.log(`✅ Serveur démarré sur le port ${PORT}`);
-      });
-      
+        // Initialisation de la base de données
+        await initializeDatabase();
+        
+        // Démarrage du serveur
+        app.listen(PORT, () => {
+            console.log(`✅ Serveur démarré sur le port ${PORT}`);
+        });
     } catch (error) {
-      console.error('❌ Erreur au démarrage:', error);
-      process.exit(1);
+        console.error('❌ Erreur au démarrage:', error);
+        process.exit(1);
     }
-  };
+};
 
-// Démarrage du serveur
 startServer();
 
 export default app;
