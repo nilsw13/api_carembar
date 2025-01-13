@@ -59,11 +59,11 @@ Bienvenue dans le backend de Carambar & co, une API dédiée à la gestion et à
 
 🚀 Liens importants
 
-    ### Documentation Swagger
+### 👉 Accédez à la documentation de l'API via Swagger
 [Carambar API Documentation](https://api-carembar.onrender.com/api-docs)
 
-### Frontend GitHub Pages
-[Front-end du projet](https://github.com/nilsw13/frontend-carambar)
+### Accédez au depot du frontend (déployé sur GitHub Pages)
+[Front-end repos](https://github.com/nilsw13/frontend-carambar)
 
 
 
@@ -108,5 +108,5 @@ Le backend est déployé sur Render et accessible publiquement.
 
 🌟 Auteur
 
-Créé avec ❤️ par [Nilsw13].
+ ### Créé avec ❤️ par [Nilsw13](https://github.com/nilsw13/frontend-carambar)
 Simplon CDA, Projet Carambar API. 🍬
