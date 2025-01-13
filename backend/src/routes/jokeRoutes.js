@@ -51,8 +51,6 @@ const router = express.Router();
  *                         type: integer
  *                         example: 5
  */
-
- 
 router.get('/jokes', getAllJokes);
 
 
@@ -94,7 +92,6 @@ router.get('/jokes', getAllJokes);
  *                       type: integer
  *                       example: 5
  */
-
 router.get('/jokes/random', getRandomJoke);
 
 /**
@@ -153,7 +150,6 @@ router.get('/jokes/random', getRandomJoke);
  *                   type: string
  *                   example: "Joke not found"
  */
-
 router.get('/jokes/:id', getJokeById);
 
 /**
@@ -208,7 +204,6 @@ router.get('/jokes/:id', getJokeById);
  *                   type: string
  *                   example: "You cannot delete a joke with more than 10 likes"
  */
-
 router.delete('/jokes/delete/:id', deleteJokeById);
 
 
@@ -263,7 +258,7 @@ router.post('/jokes/:id/like', likeJoke);
 
 /**
  * @swagger
- * /jokes:
+ * /jokes/create:
  *   post:
  *     summary: Créer une nouvelle blague
  *     description: Cette route permet de créer une nouvelle blague et de l'ajouter à la base de données.
@@ -310,7 +305,6 @@ router.post('/jokes/:id/like', likeJoke);
  *                       type: integer
  *                       example: 0
  */
-
 router.post('/jokes/create', createJoke);
 
 

@@ -19,7 +19,8 @@ const options = {
       },
     ],
   },
-  apis: ["./routes/*.js"], // Indique où Swagger doit chercher les commentaires
+  apis: ["./src/routes/*.js"],
+ // Indique où Swagger doit chercher les commentaires
 };
 
 export const swaggerSpec = swaggerJsdoc(options);
