@@ -61,7 +61,8 @@ Bienvenue dans le backend de Carambar & co, une API dédiée à la gestion et à
 
     Documentation Swagger :
     👉 Carambar API Documentation
-    [Accédez à la documentation complète de l'API via Swagger.](https://api-carembar.onrender.com)
+    🔗 [Carambar API Documentation](https://api-carembar.onrender.com/api-docs)
+
 
     Frontend GitHub Pages :
     👉 [Front-end du projet](https://github.com/username/frontend-carambar)
