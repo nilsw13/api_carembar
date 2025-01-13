@@ -30,7 +30,7 @@ Bienvenue dans le backend de Carambar & co, une API dédiée à la gestion et à
     Exemple avec cURL :
 
 ```bash
-        curl -X GET https://api-carembar.onrender.com/jokes \
+curl -X GET https://api-carembar.onrender.com/jokes \
 -H "carambar_frontend: true"
 ```
 
