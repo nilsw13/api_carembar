@@ -1,5 +1,5 @@
 import { literal } from 'sequelize';
-import Joke from '../models/Joke';
+import Joke from '../models/Joke.js';
 
 // this class will act as a @RestController in spring boot
 
