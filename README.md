@@ -9,8 +9,8 @@ Bienvenue dans le backend de Carambar & co, une API dédiée à la gestion et à
 
  
 ```bash
-    curl -X GET https://api-carembar.onrender.com/api/jokes/random \
-    -H "carambar_frontend: true"
+    curl -X GET https://api-carembar.onrender.com/jokes/random \
+-H "x-client-source: carambar-frontend"
 ```
 
 
@@ -30,8 +30,8 @@ Bienvenue dans le backend de Carambar & co, une API dédiée à la gestion et à
     Exemple avec cURL :
 
 ```bash
-curl -X GET https://api-carembar.onrender.com/api/jokes \
--H "carambar-frontend: true"
+        curl -X GET https://api-carembar.onrender.com/jokes \
+-H "x-client-source: carambar-frontend"
 ```
 
 ⚠️ Si ce header n'est pas présent, l'API rejettera votre requête avec un message d'erreur.
@@ -63,7 +63,7 @@ curl -X GET https://api-carembar.onrender.com/api/jokes \
 [Carambar API Documentation](https://api-carembar.onrender.com/api-docs)
 
 ### Accédez au depot du frontend (déployé sur GitHub Pages)
-[Front-end repos](https://github.com/nilsw13/frontend_carambar)
+[Front-end repos](https://github.com/nilsw13/frontend-carambar)
 
 
 
