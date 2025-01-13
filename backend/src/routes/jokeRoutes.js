@@ -15,7 +15,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /jokes:
+ * /v1/jokes:
  *   get:
  *     summary: Récupérer toutes les blagues
  *     description: Cette route permet de récupérer toutes les blagues disponibles.
@@ -58,7 +58,7 @@ router.get('/v1/jokes', getAllJokes);
 
 /**
  * @swagger
- * /jokes/random:
+ * /v1/jokes/random:
  *   get:
  *     summary: Récupérer une blague aléatoire
  *     description: Cette route renvoie une blague choisie aléatoirement parmi toutes celles disponibles.
@@ -96,7 +96,7 @@ router.get('/v1/jokes/random', getRandomJoke);
 
 /**
  * @swagger
- * /jokes/{id}:
+ * /v1/jokes/{id}:
  *   get:
  *     summary: Récupérer une blague par ID
  *     description: Cette route permet de récupérer une blague spécifique en utilisant son identifiant unique.
@@ -154,7 +154,7 @@ router.get('/v1/jokes/:id', getJokeById);
 
 /**
  * @swagger
- * /jokes/{id}:
+ * /v1/jokes/{id}:
  *   delete:
  *     summary: Supprimer une blague par ID
  *     description: Cette route permet de supprimer une blague spécifique si elle a moins de 10 likes.
@@ -212,7 +212,7 @@ router.delete('/v1/jokes/delete/:id', deleteJokeById);
 
 /**
  * @swagger
- * /jokes/{id}/like:
+ * /v1/jokes/{id}/like:
  *   post:
  *     summary: Ajouter un like à une blague
  *     description: Cette route permet d'incrémenter le nombre de likes pour une blague spécifique.
@@ -258,7 +258,7 @@ router.post('/v1/jokes/:id/like', likeJoke);
 
 /**
  * @swagger
- * /jokes/create:
+ * /v1/jokes/create:
  *   post:
  *     summary: Créer une nouvelle blague
  *     description: Cette route permet de créer une nouvelle blague et de l'ajouter à la base de données.
