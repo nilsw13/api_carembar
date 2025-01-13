@@ -15,10 +15,10 @@ const app = express();
 // Configuration CORS adaptative selon l'environnement
 const corsOptions = {
     origin: isProduction 
-        ? ['https://nilsw13.github.io/frontend_carambar'] // Remplacez nilsw13 par votre nom d'utilisateur GitHub
+        ? ['https://nilsw13.github.io'] // Remplacez nilsw13 par votre nom d'utilisateur GitHub
         : 'http://localhost:5173',
     allowedHeaders: ['Content-Type', 'X-client-source'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true
 };
 app.use(cors(corsOptions));
