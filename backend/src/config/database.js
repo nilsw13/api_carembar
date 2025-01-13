@@ -7,8 +7,8 @@ const __dirname = path.dirname(__filename);
 
 const isProduction = process.env.NODE_ENV === 'production';
 const dbPath = isProduction
-  ? join('/etc/secrets', 'carambar.sqlite')
-  : join(__dirname, '..', 'carambar.sqlite');
+  ? path.join('/etc/secrets', 'carambar.sqlite')
+  : path.join(__dirname, '..', 'carambar.sqlite');
 
 export const sequelize = new Sequelize({
   dialect: 'sqlite',
