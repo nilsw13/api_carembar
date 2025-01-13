@@ -1,36 +1,22 @@
-const express = require('express');
+import express from 'express';
+import {
+    getAllJokes,
+    getRandomJoke,
+    getJokeById,
+    deleteJokeById,
+    likeJoke,
+    createJoke
+} from '../controllers/jokeController.js';  
+
 const router = express.Router();
-const jokeController = require('../controllers/jokeController').default;
 
 
-// get /api/jokes fetch all jokes
-router.get('/jokes', jokeController.getAllJokes);
-
-// get /api/jokes/random fetch random joke
-
-router.get('/jokes/random', jokeController.getRandomJoke); // error on random fetch lets see later 
-
-// get /api/jokes/:id fetch joke by id
-
-router.get('/jokes/:id', jokeController.getJokeById);
-
-// delete /api/jokes/delete/:id delete joke by id
-
-router.delete('/jokes/delete/:id', jokeController.deleteJokeById);
-
-// post /api/jokes/like/:id like a joke
-
-router.post('/jokes/:id/like', jokeController.likeJoke);
+router.get('/jokes', getAllJokes);
+router.get('/jokes/random', getRandomJoke);
+router.get('/jokes/:id', getJokeById);
+router.delete('/jokes/delete/:id', deleteJokeById);
+router.post('/jokes/:id/like', likeJoke);
+router.post('/jokes/create', createJoke);
 
 
-
-
-
-// post /api/jokes/create create a new joke
-
-router.post('/jokes/create', jokeController.createJoke);
-
-
-
-
-export default router; 
+export default router;
