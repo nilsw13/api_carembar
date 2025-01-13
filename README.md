@@ -59,11 +59,11 @@ Bienvenue dans le backend de Carambar & co, une API dédiée à la gestion et à
 
 🚀 Liens importants
 
-    [Carambar API Documentation](https://api-carembar.onrender.com/api-docs)
+    ### Documentation Swagger
+[Carambar API Documentation](https://api-carembar.onrender.com/api-docs)
 
-
-    Frontend GitHub Pages :
-    👉 [Front-end du projet](https://github.com/username/frontend-carambar)
+### Frontend GitHub Pages
+[Front-end du projet](https://github.com/nilsw13/frontend-carambar)
 
 
 
