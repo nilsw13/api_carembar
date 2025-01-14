@@ -105,4 +105,4 @@ Le backend est déployé sur Render.
 🌟 Auteur
 
  ### Créé avec ❤️ par [Nilsw13](https://github.com/nilsw13)
-Simplon CDA, Projet Carambar API. 🍬
+Simplon CDA, Projet Carambar API . 🍬
