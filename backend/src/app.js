@@ -5,6 +5,7 @@ import swaggerUi from 'swagger-ui-express';
 import jokesRoutes from './routes/jokeRoutes.js';
 import sourceCheckMiddleware from './middleware/clientSourceCheck.js';
 import cors from 'cors';
+import { getRandomJoke } from './controllers/jokeController.js';
 
 
 
@@ -57,7 +58,9 @@ app.get('/', (req, res) => {
             jokes: '/api/v1/jokes',
             createJoke: '/api/v1/jokes/create',
             likeJoke: '/api/v1/jokes/:id/like',
-            deleteJoke: '/api/v1/jokes//delete/:id'
+            deleteJoke: '/api/v1/jokes//delete/:id',
+            getRandomJoke: '/api/v1/jokes/random',
+            getJokeById: '/api/v1/jokes/:id'
         }
     });
 });
