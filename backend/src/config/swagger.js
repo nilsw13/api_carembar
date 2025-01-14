@@ -10,13 +10,14 @@ const options = {
     },
     servers: [
       {
-        url: "http://localhost:3000", // Serveur local
-        description: "Serveur de développement",
-      },
-      {
         url: "https://api-carembar.onrender.com", // Serveur de production
         description: "Serveur de production",
       },
+      {
+        url: "http://localhost:3000", // Serveur local
+        description: "Serveur de développement",
+      },
+      
     ],
   },
   apis: ["./src/routes/*.js"],
