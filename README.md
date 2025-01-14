@@ -99,7 +99,7 @@ Par défaut, le serveur est accessible sur :
 
 Le backend est déployé sur Render.
 ### 👉 Lien vers l'API en production
-[Carambar API Documentation](https://api-carembar.onrender.com/)
+[Carambar API](https://api-carembar.onrender.com/)
 
 
 🌟 Auteur

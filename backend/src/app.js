@@ -54,9 +54,10 @@ app.get('/', (req, res) => {
         author: "Nils Wenting",
         environment: process.env.NODE_ENV || 'development',
         endpoints: {
-            getJokes: "/api/jokes",
-            getJokeByID: "/api/jokes/:id",
-            addJoke: "/api/jokes/create",
+            jokes: '/api/v1/jokes',
+            createJoke: '/api/v1/jokes/create',
+            likeJoke: '/api/v1/jokes/:id/like',
+            deleteJoke: '/api/v1/jokes//delete/:id'
         }
     });
 });
